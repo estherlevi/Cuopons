@@ -32,7 +32,7 @@ export class MainPageComponent implements OnInit {
       this.userType = localStorage.getItem("loginType");
       if (this.userType) {
         switch (this.userType) {
-          case "Administrator":
+          case "ADMINISTRATOR":
             this.router.navigate(['main', 'administrator-page']);
             break;
           case "Company":

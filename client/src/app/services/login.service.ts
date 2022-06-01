@@ -16,7 +16,7 @@ export class LoginService {
   }
   public login(type: string, email: string, pasword: string): Observable<any> {
     return new Observable<any>((res) => {
-      let body = `email=${email}&password=${pasword}`;
+      let body = `email=${email}&password=${pasword}&clientType=${type}`;
       this.http.post(`${this.baseUrl}/login`, body, { headers: this.headers, responseType:"text"})
         .subscribe(x => {
           if(x){

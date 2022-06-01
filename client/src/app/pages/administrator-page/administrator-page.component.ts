@@ -13,20 +13,11 @@ export class AdministratorPageComponent implements OnInit {
 
     this.items = [
       {
-        label: 'AddCompany', icon: 'pi pi-fw pi-home',
-        routerLink: ['AddCompany'],
+        label: 'Companies', icon: 'pi pi-fw pi-file', routerLink: ['AllCompanies'],
         routerLinkActiveOptions: '{ exact: true }'
       },
       {
-        label: 'UpdateCompany', icon: 'pi pi-fw pi-calendar', routerLink: ['UpdateCompany'],
-        routerLinkActiveOptions: '{ exact: true }'
-      },
-      {
-        label: 'DeleteCompany', icon: 'pi pi-fw pi-pencil', routerLink: ['DeleteCompany'],
-        routerLinkActiveOptions: '{ exact: true }'
-      },
-      {
-        label: 'AllCompanies', icon: 'pi pi-fw pi-file', routerLink: ['AllCompanies'],
+        label: 'Customers', icon: 'pi pi-fw pi-file', routerLink: ['AllCustomers'],
         routerLinkActiveOptions: '{ exact: true }'
       }
     ];

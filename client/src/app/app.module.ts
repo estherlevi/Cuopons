@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 import {ToolbarModule} from 'primeng/toolbar';
 import {TabMenuModule} from 'primeng/tabmenu';
+import {TableModule} from 'primeng/table';
+import {DialogModule} from 'primeng/dialog';
 
 
 
@@ -21,11 +23,11 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { CustomerPageComponent } from './pages/customer-page/customer-page.component';
 import { CompanyPageComponent } from './pages/company-page/company-page.component';
 import { AdministratorPageComponent } from './pages/administrator-page/administrator-page.component';
-import { AddCompanyComponent } from './core/add-company/add-company.component';
-import { UpdateCompanyComponent } from './core/update-company/update-company.component';
-import { DeleteCompanyComponent } from './core/delete-company/delete-company.component';
 import { AllCompaniesComponent } from './core/all-companies/all-companies.component';
 import { ApiService } from './services/api.service';
+import { CompanyDetailsComponent } from './core/company-details/company-details.component';
+import { AllCustomersComponent } from './core/all-customers/all-customers.component';
+import { CustomerDetailsComponent } from './core/customer-details/customer-details.component';
 
 
 @NgModule({
@@ -36,15 +38,15 @@ import { ApiService } from './services/api.service';
     CustomerPageComponent,
     CompanyPageComponent,
     AdministratorPageComponent,
-    AddCompanyComponent,
-    UpdateCompanyComponent,
-    DeleteCompanyComponent,
-    AllCompaniesComponent
+    AllCompaniesComponent,
+    CompanyDetailsComponent,
+    AllCustomersComponent,
+    CustomerDetailsComponent
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,HttpClientModule,
     AppRoutingModule,FormsModule,
-    CardModule,ButtonModule,DropdownModule,InputTextModule,ToolbarModule,TabMenuModule
+    CardModule,ButtonModule,DropdownModule,InputTextModule,ToolbarModule,TabMenuModule,TableModule,DialogModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

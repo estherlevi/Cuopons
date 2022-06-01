@@ -3,11 +3,12 @@
         <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
     </ng-template>
 </p-toolbar>
-<p-table [value]="companies" responsiveLayout="scroll">
+<p-table [value]="customers" responsiveLayout="scroll">
     <ng-template pTemplate="header">
         <tr>
             <th>ID</th>
-            <th>Name</th>
+            <th>FirstName</th>
+            <th>LastName</th>
             <th>Email</th>
             <th></th>
         </tr>
@@ -15,13 +16,14 @@
     <ng-template pTemplate="body" let-c>
         <tr>
             <td>{{c.id}}</td>
-            <td>{{c.name}}</td>
+            <td>{{c.firstName}}</td>
+            <td>{{c.lastName}}</td>
             <td>{{c.email}}</td>
             <td> <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editCompany(c)"></button></td>
         </tr>
     </ng-template>
 </p-table>
 
-<p-dialog [(visible)]="openDialog" [style]="{width: '450px'}" header="Company Details" [modal]="true" styleClass="p-fluid">
-    <app-company-details *ngIf="selectCompany" [company]="selectCompany" (onClose)="onClose($event)"></app-company-details>
+<p-dialog [(visible)]="openDialog" [style]="{width: '450px'}" header="Customer Details" [modal]="true" styleClass="p-fluid">
+    <app-customer-details *ngIf="selectCustomer" [customer]="selectCustomer" (onClose)="onClose($event)"></app-customer-details>
 </p-dialog>

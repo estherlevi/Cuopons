@@ -2,36 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-all-companies',
-  templateUrl: './all-companies.component.html',
-  styleUrls: ['./all-companies.component.css']
+  selector: 'app-all-customers',
+  templateUrl: './all-customers.component.html',
+  styleUrls: ['./all-customers.component.css']
 })
-export class AllCompaniesComponent implements OnInit {
-
-  public companies: Array<any> = [];
-  public selectCompany: any;
+export class AllCustomersComponent implements OnInit {
+  public customers: Array<any> = [];
+  public selectCustomer: any;
   public openDialog = false;
   openNew() {
     this.openDialog = true;
-    this.selectCompany = {};
+    this.selectCustomer = {};
   }
   editCompany(c: any) {
     this.openDialog = true;
-    this.selectCompany = c;
+    this.selectCustomer = c;
   }
   hideDialog() {
     this.openDialog = false;
   }
   onClose(e:any) {
     this.openDialog = false;
-    this.selectCompany = null;
+    this.selectCustomer = null;
     this.getData();
   }
 
   private getData(){
-    this.api.getAll("admin/companies/all")
+    this.api.getAll("admin/customers/all")
       .subscribe(x => {
-        this.companies = x;
+        this.customers = x;
       })
   }
   constructor(private api: ApiService) { }
@@ -39,6 +38,5 @@ export class AllCompaniesComponent implements OnInit {
   ngOnInit(): void {
     this.getData();
   }
-
 
 }

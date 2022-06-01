@@ -1,0 +1,17 @@
+<div class="field">
+    <label for="name">Name</label>
+    <input type="text" pInputText id="name" [(ngModel)]="company.name" />
+</div>
+<div class="field">
+    <label for="email">Email</label>
+    <input type="email" pInputText id="email" [(ngModel)]="company.email" />
+</div>
+<div class="field">
+    <label for="password">Password</label>
+    <input type="text" pInputText id="password" [(ngModel)]="company.password" />
+</div>
+
+
+
+<button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveCompany()"></button>
+<button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-text" (click)="deleteCompany()"></button>

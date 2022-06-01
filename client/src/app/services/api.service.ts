@@ -19,8 +19,8 @@ export class ApiService {
   public post(entity: string, obj: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/${entity}`, obj, { headers: this.getHeaders() });
   }
-  public put(entity: string, id: number, obj: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/${entity}/${id}`, obj, { headers: this.getHeaders() });
+  public put(entity: string, obj: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/${entity}`, obj, { headers: this.getHeaders() });
   }
   public delete(entity: string, id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${entity}/${id}`, { headers: this.getHeaders() });
