@@ -1,0 +1,30 @@
+<p-dataView [value]="items" layout="grid">
+
+    <ng-template pTemplate="header">
+        <div class="header-dataView">
+            <p-dropdown [options]="categoryOptions" [(ngModel)]="catgoryName" placeholder="Sort By Catgory" (onChange)="onSortCatgoryChange($event)" styleClass="mb-2 md:mb-0"></p-dropdown>
+            <span class="p-input-icon-left mb-2 md:mb-0">
+                <i class="pi pi-search" (click)="onSortMaxPriceChange($event)"></i>
+                <input type="number" pInputText placeholder="Search by Max Price"  [(ngModel)]="maxPrice" >
+            </span>
+        </div>
+    </ng-template>
+    <ng-template let-coupon pTemplate="gridItem">
+        <div class="col-3">
+            <div class="coupon-list-item">
+                <img [src]="coupon.image" width="100%" height="20%" />
+                <div class="coupon-list-detail">
+                    <div class="coupon-title">{{coupon.title}}</div>
+                    <div class="coupon-description">{{coupon.description}}</div>
+                    <div class="coupon-category">{{coupon.category}}</div>
+                    <div class="coupon-startDate">{{coupon.startDate}} - {{coupon.endDate}}</div>
+                </div>
+                <div class="coupon-list-action">
+                    <span class="coupon-price">${{coupon.price}} ({{coupon.amount}})</span>
+                    <p-button icon="pi pi-shopping-cart" (onClick)="cartCoupon(coupon)"></p-button>
+
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-dataView>

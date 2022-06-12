@@ -39,6 +39,9 @@ private  int customerId;
 		}
 		}
 	
+		public int getId() {
+			return customerId;
+		}
 	
 
 		public void addCouponPurchase(int couponId) throws CouponSystemException  {
@@ -85,7 +88,7 @@ private  int customerId;
 			
 	public List<Coupon> getCouponByCategory(Category categoryName) throws CouponSystemException {
 		
-			Optional<List<Coupon>> opt = Optional.of(this.couponRepo.findByCategoryAndCustomersId(categoryName,customerId));
+			Optional<List<Coupon>> opt = Optional.of(this.couponRepo.findByCategory(categoryName));
 			if (opt.isPresent()) {
 				System.out.println(opt);
 				return opt.get();
@@ -94,7 +97,7 @@ private  int customerId;
 			}
 		}	
 	
-	public List <Coupon>GetAllCouponByMaxPrice(double maxPrice) throws CouponSystemException{
+	public List <Coupon>getAllCouponByMaxPrice(double maxPrice) throws CouponSystemException{
 		if (maxPrice>-1) {
 		List<Coupon> allCouponsByMaxPrice = this.couponRepo.findByCustomersIdAndPriceLessThanEqual(customerId,maxPrice);
 		System.out.println(allCouponsByMaxPrice);

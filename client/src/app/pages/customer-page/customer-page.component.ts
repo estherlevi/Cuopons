@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-customer-page',
@@ -7,7 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerPageComponent implements OnInit {
 
-  constructor() { }
+  public items: MenuItem[];
+
+
+  constructor() { 
+    this.items = [
+      {
+        label: 'CompanyInfo', icon: 'pi pi-fw pi-file', routerLink: ['CompanyInfo'],
+        routerLinkActiveOptions: '{ exact: true }'
+      },
+      {
+        label: 'Coupons', icon: 'pi pi-fw pi-file', routerLink: ['Coupons'],
+        routerLinkActiveOptions: '{ exact: true }'
+      }
+
+    ];
+  }
 
   ngOnInit(): void {
   }

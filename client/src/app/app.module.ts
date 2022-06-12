@@ -16,6 +16,7 @@ import {ToolbarModule} from 'primeng/toolbar';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {TableModule} from 'primeng/table';
 import {DialogModule} from 'primeng/dialog';
+import {DataViewModule} from 'primeng/dataview';
 
 
 
@@ -28,6 +29,10 @@ import { ApiService } from './services/api.service';
 import { CompanyDetailsComponent } from './core/company-details/company-details.component';
 import { AllCustomersComponent } from './core/all-customers/all-customers.component';
 import { CustomerDetailsComponent } from './core/customer-details/customer-details.component';
+import { CompanyInfoComponent } from './core/company-info/company-info.component';
+import { AllCouponsComponent } from './core/all-coupons/all-coupons.component';
+import { CouponDetailsComponent } from './core/coupon-details/coupon-details.component';
+import { AllCouponsViewComponent } from './core/all-coupons-view/all-coupons-view.component';
 
 
 @NgModule({
@@ -41,12 +46,16 @@ import { CustomerDetailsComponent } from './core/customer-details/customer-detai
     AllCompaniesComponent,
     CompanyDetailsComponent,
     AllCustomersComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    CompanyInfoComponent,
+    AllCouponsComponent,
+    CouponDetailsComponent,
+    AllCouponsViewComponent
   ],
   imports: [
     BrowserModule,BrowserAnimationsModule,HttpClientModule,
     AppRoutingModule,FormsModule,
-    CardModule,ButtonModule,DropdownModule,InputTextModule,ToolbarModule,TabMenuModule,TableModule,DialogModule
+    CardModule,ButtonModule,DropdownModule,InputTextModule,ToolbarModule,TabMenuModule,TableModule,DialogModule,DataViewModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

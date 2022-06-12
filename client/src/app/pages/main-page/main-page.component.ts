@@ -35,10 +35,10 @@ export class MainPageComponent implements OnInit {
           case "ADMINISTRATOR":
             this.router.navigate(['main', 'administrator-page']);
             break;
-          case "Company":
+          case "COMPANY":
             this.router.navigate(['main', 'company-page']);
             break;
-          case "Customer":
+          case "CUSTOMER":
             this.router.navigate(['main', 'customer-page']);
             break;
 

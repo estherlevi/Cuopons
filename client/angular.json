@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "../eldar3/spring-for-angular-products-login-filters-822.132-eldar/src/main/resources/static",
+                        "outputPath": "../coupon_phse3_nechama2/src/main/resources/static",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -30,6 +30,7 @@
                             "node_modules/primeicons/primeicons.css",
                             "node_modules/primeng/resources/themes/bootstrap4-light-blue/theme.css",
                             "node_modules/primeng/resources/primeng.min.css",
+                            "node_modules/primeflex/primeflex.css",
                             "src/styles.css"
                         ],
                         "scripts": []

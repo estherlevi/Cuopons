@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -39,7 +40,7 @@ public class AdminController {
 	
 
 	@PostMapping("/company/add")
-	public void addCompany(@RequestBody Company company )  {
+	public void addCompany(@RequestBody Company company, @RequestHeader String token)  {
 		try {
 			this.adminService.addCompany(company);
 		} catch (CouponSystemException e) {
@@ -57,7 +58,7 @@ public class AdminController {
 	}
 
 	@GetMapping("/customer/{customerId}")
-	public Customer getOneCustomer(@PathVariable int customerId)
+	public Customer getOneCustomer(@PathVariable int customerId,@RequestHeader String token)
 			throws ResponseStatusException {
 		try {
 			return this.adminService.getCustomerById(customerId);
@@ -66,7 +67,7 @@ public class AdminController {
 		}
 	}	
 	@GetMapping("/company/{companyId}")
-	public Company getOneCompany(@PathVariable int companyId)
+	public Company getOneCompany(@PathVariable int companyId, @RequestHeader String token)
 			throws ResponseStatusException {
 		try {
 			return this.adminService.getCompanyById(companyId);
@@ -76,7 +77,7 @@ public class AdminController {
 	}
 	
 	@GetMapping("/customers/all")
-	public List<Customer> getAllCustomers() {
+	public List<Customer> getAllCustomers(@RequestHeader String token) {
 		try {
 			return this.adminService.getAllCustomers();
 		} catch (CouponSystemException e) {
@@ -86,7 +87,7 @@ public class AdminController {
 	}
 	
 	@GetMapping("/companies/all")
-	public List<Company> getAllCompanies() {
+	public List<Company> getAllCompanies(@RequestHeader String token) {
 		try {
 			return this.adminService.getAllCompanies();
 		} catch (CouponSystemException e) {
@@ -94,8 +95,8 @@ public class AdminController {
 		}
 	}
 	
-	@PostMapping("/customer/update")
-	public void updateCustomer(@RequestBody Customer customer) throws ResponseStatusException {
+	@PutMapping("/customer/update")
+	public void updateCustomer(@RequestBody Customer customer, @RequestHeader String token) throws ResponseStatusException {
 		try {
 			this.adminService.updateCustomer(customer);
 		} catch (Exception e) {
@@ -103,8 +104,8 @@ public class AdminController {
 		}
 	}
 	
-	@PostMapping("/company/update")
-	public void updateCompany(@RequestBody Company company) throws ResponseStatusException {
+	@PutMapping("/company/update")
+	public void updateCompany(@RequestBody Company company, @RequestHeader String token) throws ResponseStatusException {
 		try {
 			this.adminService.updateCompany(company);
 		} catch (Exception e) {
@@ -113,7 +114,7 @@ public class AdminController {
 	}
 
 	@DeleteMapping("/company/{companyId}")
-	public void deleteOneCompany(@PathVariable int companyId)
+	public void deleteOneCompany(@PathVariable int companyId, @RequestHeader String token)
 			throws ResponseStatusException {
 		try {
 			this.adminService.deleteCompany(companyId);
@@ -122,7 +123,7 @@ public class AdminController {
 		}
 	}
 	@DeleteMapping("/customer/{customerId}")
-	public void deleteOneCustomer(@PathVariable int customerId)
+	public void deleteOneCustomer(@PathVariable int customerId, @RequestHeader String token)
 			throws ResponseStatusException {
 		try {
 			this.adminService.deleteCustomer(customerId);

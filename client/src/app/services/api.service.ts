@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -14,6 +14,8 @@ export class ApiService {
     return this.http.get(`${this.baseUrl}/${entity}/${id}`, { headers: this.getHeaders() });
   }
   public getAll(entity: string): Observable<any> {
+    console.log( this.getHeaders());
+    
     return this.http.get(`${this.baseUrl}/${entity}`, { headers: this.getHeaders() });
   }
   public post(entity: string, obj: any): Observable<any> {
@@ -29,9 +31,7 @@ export class ApiService {
   private getHeaders(): any {
     const token = localStorage.getItem("token");
 
-    const headers = new Headers({
-      'token': `${token}`
-    })
+    const headers = new HttpHeaders({"token": `${token}`})
     return headers;
   }
 

@@ -1,0 +1,57 @@
+        .header-dataView {
+            display: flex;
+            align-content: center;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .coupon-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .coupon-description {
+            margin: 0 0 1rem 0;
+        }
+        
+        .coupon-category {
+            font-weight: 600;
+            vertical-align: middle;
+        }
+        
+        .coupon-price {
+            font-weight: 600;
+            vertical-align: middle;
+            padding: 10px;
+        }
+        
+        .coupon-amount {
+            font-weight: 600;
+            vertical-align: middle;
+        }
+        
+        .coupon-startDate {
+            font-weight: 600;
+            vertical-align: middle;
+        }
+        
+        .coupon-list-action {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .coupon-list-detail {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+        
+        .coupon-list-item {
+            margin: .5em;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+        }

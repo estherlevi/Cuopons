@@ -16,26 +16,24 @@ import app.core.exceptions.CouponSystemException;
 @Transactional(rollbackFor = CouponSystemException.class)
 @Scope("prototype")
 public class CompanyService extends ClientService{
-	
-	private int companyId;	
-
-
+	private int ID; 
+	public int getId() {
+		return this.ID;
+	}
 	@Override
 	public boolean login(String email, String password) throws CouponSystemException {
 		Optional<Company> login = companyRepo.findByEmailAndPassword(email, password);
 		
 		if(login.isPresent()){
 			System.out.println("succesfuly logged into company with email: "+email+" and password: "+password);
-			companyId = login.get().getId();
+			this.ID = login.get().getId();
 			return true;
 		}
 		else {
 			throw new CouponSystemException("wrong password or email enetered");
 			
 		}
-		}
-	
-	
+	}
 
 	public Coupon getCoupon(int couponId) throws CouponSystemException {
 		Optional<Coupon> opt = this.couponRepo.findById(couponId);
@@ -46,12 +44,12 @@ public class CompanyService extends ClientService{
 		}
 
 	}
-		public void addCoupon(Coupon coupon) throws CouponSystemException {
+	public void addCoupon(Coupon coupon, int CompanyID) throws CouponSystemException {
 			try {
 				
-				Company company = getCompanyInfo();
-				if(couponRepo.existsByDescriptionAndCompanyId(coupon.getDescription(), companyId)) {
-					throw new CouponSystemException("can't add coupon with same description as exsisting coupon for this company: "+companyId);
+				Company company = getCompanyInfo(CompanyID);
+				if(couponRepo.existsByDescriptionAndCompanyId(coupon.getDescription(), CompanyID)) {
+					throw new CouponSystemException("can't add coupon with same description as exsisting coupon for this company: "+CompanyID);
 				}
 				
 				company.add(coupon);
@@ -62,8 +60,7 @@ public class CompanyService extends ClientService{
 				throw new CouponSystemException("failed to add coupon to company"+e.getMessage());
 			}					
 	}
-
-		public void updateCoupon(Coupon coupon) throws CouponSystemException {
+	public void updateCoupon(Coupon coupon) throws CouponSystemException {
 			try {
 				Coupon couponFromDb = getCoupon(coupon.getId());
 			
@@ -79,15 +76,10 @@ public class CompanyService extends ClientService{
 		} catch (Exception e) {throw new CouponSystemException("update coupon failed"+e.getMessage());
 		}
 		
-		}
-			
-			
-		public void deleteCoupon(int couponId) {
+		}				
+	public void deleteCoupon(int couponId) {
 			this.couponRepo.deleteById(couponId);
-		}
-
-
-		
+		}	
 	public List<Coupon> GetCouponByCategory(Category categoryName) throws CouponSystemException {
 		
 			Optional<List<Coupon>> opt = Optional.of(this.couponRepo.findByCategory(categoryName));
@@ -98,7 +90,7 @@ public class CompanyService extends ClientService{
 				throw new CouponSystemException("getCoupon failed - category " + categoryName + " not found");
 			}
 		}	
-	public List <Coupon>GetAllCoupons() throws CouponSystemException{
+	public List <Coupon>GetAllCoupons(int companyId) throws CouponSystemException{
 		try {
 			
 		List<Coupon> allCoupons = this.couponRepo.findAllByCompanyId(companyId);
@@ -109,7 +101,7 @@ public class CompanyService extends ClientService{
 			throw new CouponSystemException("no coupons found",e);
 		}
 }
-	public List <Coupon>GetAllCouponByMaxPrice(double maxPrice) throws CouponSystemException{
+	public List <Coupon>GetAllCouponByMaxPrice(double maxPrice,int companyId) throws CouponSystemException{
 		if (maxPrice>-1) {
 		List<Coupon> allCouponsByMaxPrice = this.couponRepo.findByCompanyIdAndPriceLessThanEqual(companyId,maxPrice);
 		System.out.println(allCouponsByMaxPrice);
@@ -118,8 +110,8 @@ public class CompanyService extends ClientService{
 		throw new CouponSystemException("max price is equals or is less then o ");
 		
 	}
-	
-	public Company getCompanyInfo() throws CouponSystemException{
+	public Company getCompanyInfo(int companyId) throws CouponSystemException{
+		System.out.println("companyId " + companyId);
 		Optional<Company> company = companyRepo.findById(companyId);
 		
 		if(company.isPresent()) {

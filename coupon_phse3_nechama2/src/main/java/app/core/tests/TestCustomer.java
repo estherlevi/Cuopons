@@ -100,7 +100,7 @@ import app.core.services.CustomerService;
 		
 		private void doGetCouponByMaxPrice()  {
 			try {
-				service.GetAllCouponByMaxPrice(80);
+				service.getAllCouponByMaxPrice(80);
 			} catch (CouponSystemException e) {
 				
 				System.out.println("failed to get coupon by max price"+e.getMessage());

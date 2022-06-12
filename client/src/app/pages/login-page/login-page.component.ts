@@ -34,7 +34,7 @@ export class LoginPageComponent implements OnInit {
     this.type = "";
     this.email = "";
     this.password = "";
-    this.typeOptions = ["ADMINISTRATOR", "Company", "Customer"];
+    this.typeOptions = ["ADMINISTRATOR", "COMPANY", "CUSTOMER"];
   }
 
   ngOnInit(): void {
